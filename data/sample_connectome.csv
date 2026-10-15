@@ -1,0 +1,6 @@
+pre_id,post_id,weight
+n1,n2,3
+n1,n3,1
+n2,n4,5
+n3,n4,2
+n4,n5,4

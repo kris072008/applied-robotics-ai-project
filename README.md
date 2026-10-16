@@ -52,3 +52,6 @@ Useful extras: `git status` shows what has changed and what is staged, and `git 
 ## Author
 
 Krishna Mahajan, BSc Robotics and AI
+
+## About the project
+firefly-brain simulates part of the fruit fly (Drosophila) connectome with leaky integrate-and-fire neurons. Game events stimulate sensory neurons, and motor neuron spikes become fly movement.

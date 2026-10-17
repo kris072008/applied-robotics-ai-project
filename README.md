@@ -51,6 +51,8 @@ Tasks are tracked on a Trello board, linked to GitHub with the Trello GitHub Pow
 
 **Labels:** Feature, Testing, Setup, Hardware, Assignment, Future.
 
+![Trello board](docs/screenshots/trello-board.jpg)
+
 ## Workflow and branching strategy
 
 - `main` always holds stable, working code. Nothing is committed to it directly.
@@ -69,7 +71,13 @@ Tasks are tracked on a Trello board, linked to GitHub with the Trello GitHub Pow
 | `git push` | Uploads local commits to GitHub | On GitHub, visible to others |
 | `git pull` | Downloads and merges the latest changes from GitHub | Up to date locally |
 
-`git log --oneline --graph --all` shows the full history, including how each branch was merged.
+Example: editing the README, then running `git status`, `git add`, `git commit` and `git push` one step at a time:
+
+![git add, commit and push](docs/screenshots/add-commit-push.png)
+
+`git log --oneline --graph --all` shows the full history, including how each branch was merged:
+
+![git log graph](docs/screenshots/git-log-graph.png)
 
 ## Author
 

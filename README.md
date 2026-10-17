@@ -71,6 +71,15 @@ Tasks are tracked on a Trello board, linked to GitHub with the Trello GitHub Pow
 | `git push` | Uploads local commits to GitHub | On GitHub, visible to others |
 | `git pull` | Downloads and merges the latest changes from GitHub | Up to date locally |
 
+### Cloning the repository
+
+`git clone` downloads a full copy of the repository from GitHub, including every file, branch and commit, so anyone can start working on it:
+
+```bash
+git clone https://github.com/kris072008/applied-robotics-ai-project.git
+cd applied-robotics-ai-project
+```
+
 Example: editing the README, then running `git status`, `git add`, `git commit` and `git push` one step at a time:
 
 ![git add, commit and push](docs/screenshots/add-commit-push.png)

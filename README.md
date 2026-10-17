@@ -1,57 +1,76 @@
-# Applied Robotics and AI Project
+# firefly-brain: Applied Robotics and AI Project
 
 Project repository for the Applied Robotics and AI Project module (PSB Academy / University of Hertfordshire).
-Maintained by **Krishna Mahajan** ([@kris072008](https://github.com/kris072008)).
+Maintained by Krishna Mahajan (@kris072008).
 
 ## About the project
 
-This project develops a robot that combines hardware (sensors, motors, a microcontroller) with AI and Python software to carry out an autonomous task. The repository holds the source code, documentation and progress history for the project.
+firefly-brain simulates part of the fruit fly (*Drosophila*) connectome using leaky integrate-and-fire (LIF) neurons.
+
+1. **Sensory input** - game events (food left, food right, danger) stimulate sensory neurons.
+2. **Simulation** - spikes spread through the connectome using the LIF model.
+3. **Motor output** - spikes from motor neurons become fly movement (turn left, turn right, move forward).
+
+This is a working prototype using a small sample connectome. The next step is to load a real subset of the FlyWire dataset.
 
 ## Repository structure
 
-```
-applied-robotics-ai-project/
-├── src/        # Source code (Python / Arduino)
-├── docs/       # Documentation, diagrams and screenshots
-├── .gitignore  # Python files Git should ignore
-└── README.md   # This file
-```
+    applied-robotics-ai-project/
+    ├── src/
+    │   ├── sensor.py              # Ultrasonic sensor reading module
+    │   ├── connectome_loader.py   # Loads connectome data into a graph
+    │   ├── lif_simulation.py      # Leaky integrate-and-fire spiking simulation
+    │   ├── sensory_mapping.py     # Game events -> sensory neurons
+    │   └── motor_mapping.py       # Motor neuron spikes -> fly movement
+    ├── data/
+    │   └── sample_connectome.csv  # Small sample connectome
+    ├── tests/
+    │   └── test_simulation.py     # Unit tests for the full pipeline
+    ├── docs/                      # Documentation and screenshots
+    └── README.md
 
 ## Getting started
 
-```bash
-git clone https://github.com/kris072008/applied-robotics-ai-project.git
-cd applied-robotics-ai-project
-```
+Requirements: Git and Python 3.10+.
 
-Requirements: Git, Python 3.10+, and the Arduino IDE for any microcontroller code.
+    git clone https://github.com/kris072008/applied-robotics-ai-project.git
+    cd applied-robotics-ai-project
+    PYTHONPATH=src python3 src/motor_mapping.py               # run the pipeline
+    PYTHONPATH=src python3 -m unittest discover -s tests -v   # run the tests
 
-## Project management
+## Project management (Trello)
 
-Tasks are tracked on a Trello board with these lists: **Backlog → To Do → In Progress (WIP limit: 3) → Review → Done**.
-Each card has a label (Hardware, Software, Documentation), a due date and, where relevant, a link to its commit or pull request through the Trello GitHub Power-Up.
+Tasks are tracked on a Trello board, linked to GitHub with the Trello GitHub Power-Up.
+
+| List | Purpose |
+|------|---------|
+| Backlog | Future ideas, not planned for this sprint |
+| To Do | Planned for this sprint |
+| In Progress | Being worked on (**WIP limit: 3**) |
+| Done | Finished and merged, with the PR attached |
+
+**Labels:** Feature, Testing, Setup, Hardware, Assignment, Future.
 
 ## Workflow and branching strategy
 
-- `main` always holds stable, working code.
-- New work goes on a feature branch, for example `feature/sensor-reading` or `fix/motor-speed`.
-- Commit often, with clear messages that say what changed (e.g. `Add ultrasonic sensor reading`).
-- When a feature is finished, push the branch, open a **pull request** and merge it into `main`.
-- After merging, move the Trello card to **Done** and link the PR.
+- `main` always holds stable, working code. Nothing is committed to it directly.
+- Every change, including documentation, goes on its own branch: `feature/...`, `fix/...` or `docs/...`.
+- Commit often, with clear messages that say what changed.
+- When the work is finished: push the branch, open a pull request, merge it into `main`.
+- After merging: attach the PR to its Trello card and move the card to Done.
 
 ## Git basics: add, commit, push
 
 | Command | What it does | Where the change is afterwards |
-|---|---|---|
-| `git add <file>` | Moves changes into the **staging area**, choosing what goes into the next commit | Staged, not saved in history yet |
-| `git commit -m "msg"` | Saves the staged changes as a **snapshot** in local history, with a message | Saved locally, on your computer only |
-| `git push` | Uploads your local commits to the **remote** repository on GitHub | On GitHub, visible to the team and backed up |
+|---------|--------------|-------------------------------|
+| `git status` | Shows changed, untracked and staged files | - |
+| `git add <file>` | Moves changes into the staging area | Staged, not saved in history yet |
+| `git commit -m "msg"` | Saves staged changes as a snapshot with a message | Saved locally |
+| `git push` | Uploads local commits to GitHub | On GitHub, visible to others |
+| `git pull` | Downloads and merges the latest changes from GitHub | Up to date locally |
 
-Useful extras: `git status` shows what has changed and what is staged, and `git log --oneline` shows the commit history.
+`git log --oneline --graph --all` shows the full history, including how each branch was merged.
 
 ## Author
 
 Krishna Mahajan, BSc Robotics and AI
-
-## About the project
-firefly-brain simulates part of the fruit fly (Drosophila) connectome with leaky integrate-and-fire neurons. Game events stimulate sensory neurons, and motor neuron spikes become fly movement.

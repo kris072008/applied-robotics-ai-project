@@ -91,3 +91,5 @@ Example: editing the README, then running `git status`, `git add`, `git commit` 
 ## Author
 
 Krishna Mahajan, BSc Robotics and AI
+
+Demo edit recorded for Assignment 1 video - 19 Oct 2026.
